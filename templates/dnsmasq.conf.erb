@@ -1,0 +1,224 @@
+# File managed by Puppet
+#
+<% if scope.lookupvar('dnsmasq::port') != '' -%>
+port=<%= scope.lookupvar('dnsmasq::port') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_domain_need') -%> 
+domain-needed
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_bogus_priv') -%>
+bogus-priv
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_filterwin2k') -%>
+filterwin2k
+<% end -%>
+<% if scope.lookupvar('dnsmasq::resolv_file') != '' -%>
+resolv-file=<%= scope.lookupvar('dnsmasq::resolv_file') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_strict_order') -%>
+strict-order
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_no_resolv') -%>
+no-resolv
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_no_poll') -%>
+no-poll
+<% end -%>
+<% if scope.lookupvar('dnsmasq::process_user') != '' -%>
+user=<%= scope.lookupvar('dnsmasq::process_user') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_bind_interfaces') -%>
+bind-interfaces
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_no_hosts') -%>
+no-hosts
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_expand_hosts') -%>
+expand-hosts
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_enable_ra') -%>
+enable-ra
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_read_ethers') -%>
+read-ethers
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_dhcp_authoritative') -%>
+dhcp-authoritative
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_no_negcache') -%>
+no-negcache
+<% end -%>
+<% if scope.lookupvar('dnsmasq::pxe_prompt') != '' -%>
+pxe-prompt="<%= scope.lookupvar('dnsmasq::pxe_prompt') %>"<% if scope.lookupvar('dnsmasq::pxe_prompt_timeout') != '' -%>, <%= scope.lookupvar('dnsmasq::pxe_prompt_timeout') %><% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::pxe_service') != '' -%>
+pxe-service=<%= scope.lookupvar('dnsmasq::pxe_service') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_enable_tftp') -%>
+enable-tftp
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_tftp_secure') -%>
+tftp-secure
+<% end -%>
+<% if scope.lookupvar('dnsmasq::tftp_root') != '' -%> 
+tftp-root=<%= scope.lookupvar('dnsmasq::tftp_root') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::dhcp_lease_max') != '' -%> 
+dhcp-lease-max=<%= scope.lookupvar('dnsmasq::dhcp_lease_max') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::dhcp_leasefile') != '' -%> 
+dhcp-leasefile=<%= scope.lookupvar('dnsmasq::dhcp_leasefile') %> 
+<% end -%>
+<% if scope.lookupvar('dnsmasq::dhcp_script') != '' -%> 
+dhcp-script=<%= scope.lookupvar('dnsmasq::dhcp_script') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::cache_size') != '' -%> 
+cache-size=<%= scope.lookupvar('dnsmasq::cache_size') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::local_ttl') != '' -%> 
+local-ttl=<%= scope.lookupvar('dnsmasq::local_ttl') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_log_queries') -%>
+log-queries
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_log_dhcp') -%>
+log-dhcp
+<% end -%>
+<% if scope.lookupvar('dnsmasq::mx_target') != '' -%>
+mx-target=<%= scope.lookupvar('dnsmasq::mx_target') %>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_localmx') -%>
+localmx
+<% end -%>
+<% if scope.lookupvar('dnsmasq::bool_selfmx') -%>
+selfmx
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_server') != [] -%>
+<% scope.lookupvar('dnsmasq::array_server').each do |server| -%>
+server=<%= server %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_local') != [] -%>
+<% scope.lookupvar('dnsmasq::array_local').each do |local| -%>
+local=<%= local %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_address') != [] -%>
+<% scope.lookupvar('dnsmasq::array_address').each do |address| -%>
+address=<%= address %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_interface') != [] -%>
+<% scope.lookupvar('dnsmasq::array_interface').each do |interface| -%>
+interface=<%= interface %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_except_interface') != [] -%>
+<% scope.lookupvar('dnsmasq::array_except_interface').each do |except_interface| -%>
+except-interface=<%= except_interface %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_listen_address') != [] -%>
+<% scope.lookupvar('dnsmasq::array_listen_address').each do |listen_address| -%>
+listen-address=<%= listen_address %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_no_dhcp_interface') != [] -%>
+<% scope.lookupvar('dnsmasq::array_no_dhcp_interface').each do |no_dhcp_interface| -%>
+no-dhcp-interface=<%= no_dhcp_interface %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_addn_hosts') != [] -%>
+<% scope.lookupvar('dnsmasq::array_addn_hosts').each do |addn_hosts| -%>
+addn-hosts=<%= addn_hosts %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_domain') != [] -%>
+<% scope.lookupvar('dnsmasq::array_domain').each do |domain| -%>
+domain=<%= domain %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_range') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_range').each do |dhcp_range| -%>
+dhcp-range=<%= dhcp_range %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_host') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_host').each do |dhcp_host| -%>
+dhcp-host=<%= dhcp_host %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_ignore') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_ignore').each do |dhcp_ignore| -%>
+dhcp-ignore=<%= dhcp_ignore %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_vendorclass') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_vendorclass').each do |dhcp_vendorclass| -%>
+dhcp-vendorclass=<%= dhcp_vendorclass %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_userclass') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_userclass').each do |dhcp_userclass| -%>
+dhcp-userclass=<%= dhcp_userclass %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_mac') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_mac').each do |dhcp_mac| -%>
+dhcp-mac=<%= dhcp_mac %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_option') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_option').each do |dhcp_option| -%>
+dhcp-option=<%= dhcp_option %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_boot') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_boot').each do |dhcp_boot| -%>
+dhcp-boot=<%= dhcp_boot %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_dhcp_match') != [] -%>
+<% scope.lookupvar('dnsmasq::array_dhcp_match').each do |dhcp_match| -%>
+dhcp-match=<%= dhcp_match %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_bogus_nxdomain') != [] -%>
+<% scope.lookupvar('dnsmasq::array_bogus_nxdomain').each do |bogus_nxdomain| -%>
+bogus-nxdomain=<%= bogus_nxdomain %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_host_alias') != [] -%>
+<% scope.lookupvar('dnsmasq::array_host_alias').each do |v_alias| -%>
+alias=<%= v_alias %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_mx_host') != [] -%>
+<% scope.lookupvar('dnsmasq::array_mx_host').each do |mx_host| -%>
+mx-host=<%= mx_host %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_srv_host') != [] -%>
+<% scope.lookupvar('dnsmasq::array_srv_host').each do |srv_host| -%>
+srv-host=<%= srv_host %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_ptr_record') != [] -%>
+<% scope.lookupvar('dnsmasq::array_ptr_record').each do |ptr_record| -%>
+ptr-record=<%= ptr_record %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_txt_record') != [] -%>
+<% scope.lookupvar('dnsmasq::array_txt_record').each do |txt_record| -%>
+txt-record=<%= txt_record %>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::array_cname') != [] -%>
+<% scope.lookupvar('dnsmasq::array_cname').each do |cname| -%>
+cname=<%= cname%>
+<% end -%>
+<% end -%>
+<% if scope.lookupvar('dnsmasq::data_dir') != '' -%> 
+# Include another lot of configuration options.
+conf-dir=<%= scope.lookupvar('dnsmasq::data_dir') -%> 
+<% end -%>

@@ -1,4 +1,4 @@
-name 'nm-dnsmasq'
+name 'netmanagers-dnsmasq'
 version '1.0.0'
 
 author 'Javier Bertoli'

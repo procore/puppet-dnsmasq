@@ -128,7 +128,7 @@
 # [*noops*]
 #   Set noop metaparameter to true for all the resources managed by the module.
 #   Basically you can run a dryrun for this specific module if you set
-#   this to true. Default: false
+#   this to true. Default: undef
 #
 # Default class params - As defined in dnsmasq::params.
 # Note that these variables are mostly defined and used in the module itself,
@@ -514,7 +514,6 @@ class dnsmasq (
   $bool_firewall=any2bool($firewall)
   $bool_debug=any2bool($debug)
   $bool_audit_only=any2bool($audit_only)
-  $bool_noops=any2bool($noops)
 
   $bool_domain_needed=any2bool($domain_needed)
   $bool_bogus_priv=any2bool($bogus_priv)
@@ -816,7 +815,7 @@ class dnsmasq (
   ### Managed resources
   package { $dnsmasq::package:
     ensure  => $dnsmasq::manage_package,
-    noop    => $dnsmasq::bool_noops,
+    noop    => $dnsmasq::noops,
   }
 
   service { 'dnsmasq':
@@ -826,7 +825,7 @@ class dnsmasq (
     hasstatus  => $dnsmasq::service_status,
     pattern    => $dnsmasq::process,
     require    => Package[$dnsmasq::package],
-    noop       => $dnsmasq::bool_noops,
+    noop       => $dnsmasq::noops,
   }
 
   if $dnsmasq::addn_hosts_dir != '' {
@@ -840,7 +839,7 @@ class dnsmasq (
       force   => $dnsmasq::bool_source_dir_purge,
       replace => $dnsmasq::manage_file_replace,
       audit   => $dnsmasq::manage_audit,
-      noop    => $dnsmasq::bool_noops,
+      noop    => $dnsmasq::noops,
     }
   }
 
@@ -856,7 +855,7 @@ class dnsmasq (
     content => $dnsmasq::manage_file_content,
     replace => $dnsmasq::manage_file_replace,
     audit   => $dnsmasq::manage_audit,
-    noop    => $dnsmasq::bool_noops,
+    noop    => $dnsmasq::noops,
   }
 
   # The whole dnsmasq configuration directory can be recursively overriden
@@ -872,7 +871,7 @@ class dnsmasq (
       force   => $dnsmasq::bool_source_dir_purge,
       replace => $dnsmasq::manage_file_replace,
       audit   => $dnsmasq::manage_audit,
-      noop    => $dnsmasq::bool_noops,
+      noop    => $dnsmasq::noops,
     }
   }
 
@@ -890,7 +889,7 @@ class dnsmasq (
       ensure    => $dnsmasq::manage_file,
       variables => $classvars,
       helper    => $dnsmasq::puppi_helper,
-      noop      => $dnsmasq::bool_noops,
+      noop      => $dnsmasq::noops,
     }
   }
 
@@ -904,7 +903,7 @@ class dnsmasq (
         target   => $dnsmasq::monitor_target,
         tool     => $dnsmasq::monitor_tool,
         enable   => $dnsmasq::manage_monitor,
-        noop     => $dnsmasq::bool_noops,
+        noop     => $dnsmasq::noops,
       }
     }
     if $dnsmasq::service != '' {
@@ -916,7 +915,7 @@ class dnsmasq (
         argument => $dnsmasq::process_args,
         tool     => $dnsmasq::monitor_tool,
         enable   => $dnsmasq::manage_monitor,
-        noop     => $dnsmasq::bool_noops,
+        noop     => $dnsmasq::noops,
       }
     }
   }
@@ -933,7 +932,7 @@ class dnsmasq (
       direction   => 'input',
       tool        => $dnsmasq::firewall_tool,
       enable      => $dnsmasq::manage_firewall,
-      noop        => $dnsmasq::bool_noops,
+      noop        => $dnsmasq::noops,
     }
   }
 
@@ -947,7 +946,7 @@ class dnsmasq (
       owner   => 'root',
       group   => 'root',
       content => inline_template('<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime.*|path|timestamp|free|.*password.*|.*psk.*|.*key)/ }.to_yaml %>'),
-      noop    => $dnsmasq::bool_noops,
+      noop    => $dnsmasq::noops,
     }
   }
 

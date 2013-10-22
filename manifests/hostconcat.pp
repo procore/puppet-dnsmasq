@@ -29,7 +29,7 @@ define dnsmasq::hostconcat (
 
   concat::fragment { "dnsmasq_addn_hosts_${name}":
     target  => $concat_host_file,
-    content => inline_template("<%= real_ip %> <%= names * ' ' %>\n"),
+    content => inline_template("<%= @real_ip %> <%= @names * ' ' %>\n"),
     order   => $order,
     ensure  => $ensure,
     notify  => Service['dnsmasq'],

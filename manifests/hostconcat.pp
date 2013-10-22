@@ -17,8 +17,8 @@ define dnsmasq::hostconcat (
     default => $ip,
   }
 
-  if ! defined(Concat["${concat_host_file}"]) {
-    concat { "${concat_host_file}":
+  if ! defined(Concat[$concat_host_file]) {
+    concat { $concat_host_file:
       mode    => '0644',
       warn    => true,
       owner   => $dnsmasq::config_file_owner,
@@ -28,10 +28,10 @@ define dnsmasq::hostconcat (
   }
 
   concat::fragment { "dnsmasq_addn_hosts_${name}":
+    ensure  => $ensure,
     target  => $concat_host_file,
     content => inline_template("<%= @real_ip %> <%= @names * ' ' %>\n"),
     order   => $order,
-    ensure  => $ensure,
     notify  => Service['dnsmasq'],
   }
 }

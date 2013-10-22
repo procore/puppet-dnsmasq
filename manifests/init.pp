@@ -501,6 +501,8 @@ class dnsmasq (
   $ptr_record          = params_lookup( 'ptr_record' ),
   $txt_record          = params_lookup( 'txt_record' ),
   $cname               = params_lookup( 'cname' ),
+  $log_queries         = params_lookup( 'log_queries' ),
+  $log_dhcp            = params_lookup( 'log_dhcp' ),
   $local_ttl           = params_lookup( 'local_ttl' )
   ) inherits dnsmasq::params {
 

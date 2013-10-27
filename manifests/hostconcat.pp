@@ -7,7 +7,6 @@ define dnsmasq::hostconcat (
   $order = '50',
   $ensure = 'present' ) {
 
-  include concat::setup
   include dnsmasq
 
   $concat_host_file = "${dnsmasq::addn_hosts_dir}/${order}-${file}"

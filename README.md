@@ -43,10 +43,10 @@ times as needed in the config file, all hyphens (-) given as underscores (_):
         }
 
 * As I like to have extra hosts added in the directory "/etc/hosts.d/", with different files holding
-records with different criteria, I've created a define "dnsmasq::hostconcat" that uses "concat" and 
+records with different criteria, I've created a define "dnsmasq::addhost" that uses "concat" and 
 creates these files as needed:
 
-        dnsmasq::hostconcat {
+        dnsmasq::addhost {
           ip    => '111.222.333.444',
           names = ['onename.example.com', 
                    'anothername.example.com'],

@@ -1,37 +1,36 @@
-# This define APPENDS a line entry to a hosts file
+# Define dnsmasq::hostconcat
+#
+# This define is deprecated and will be removed in future versions
+# If you are still using it, please consider moving to dnsmasq::addhost
+# The main difference between the two is that we remove $order, as
+# dnsmasq files order is not important, and filenames get ugly.
+# If for whatever reason you REALLY want a number before your filename
+# you can it by hand anyway.
 #
 define dnsmasq::hostconcat (
-  $ip = '',
-  $names = '',
-  $file = 'extra_records.hosts',
-  $order = '50',
-  $ensure = 'present' ) {
+  $ensure = undef,
+  $ip = undef,
+  $names = undef,
+  $file = '',
+  $order = '50') {
 
   include dnsmasq
 
-  $concat_host_file = "${dnsmasq::addn_hosts_dir}/${order}-${file}"
+  warning('The define dnsmasq::hostconcat is deprecated. Use dnsmasq::addhost instead')
 
-  $real_ip = $ip ? {
-    ''      => $name,
-    default => $ip,
+  #if we provide no $file, we undef the variable to let dnsmasq::addhost
+  # to handle the default filename
+
+  $filename = $file ? {
+    ''      => undef,
+    default => "${order}-${file}",
   }
 
-  if ! defined(Concat[$concat_host_file]) {
-    concat { $concat_host_file:
-      mode    => '0644',
-      warn    => true,
-      owner   => $dnsmasq::config_file_owner,
-      group   => $dnsmasq::config_file_group,
-      require => Package['dnsmasq'],
-    }
-  }
-
-  concat::fragment { "dnsmasq_addn_hosts_${name}":
-    ensure  => $ensure,
-    target  => $concat_host_file,
-    content => inline_template("<%= @real_ip %> <%= @names * ' ' %>\n"),
-    order   => $order,
-    notify  => Service['dnsmasq'],
+  dnsmasq::addhost { $name:
+    ensure => $ensure,
+    names  => $names,
+    ip     => $ip,
+    file   => $filename,
   }
 }
 

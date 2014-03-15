@@ -1,14 +1,13 @@
-source :rubygems
+source https://rubygems.org
 
 gem "rake"
 gem "puppet", ENV['PUPPET_VERSION'] || '~> 2.7.0'
 gem "puppet-lint"
-gem "rspec-puppet"
-gem 'rspec-system-puppet'
-gem "puppet-syntax"
-gem "puppetlabs_spec_helper"
-gem 'travis'
-gem 'travis-lint'
 gem 'puppet-syntax'
 gem 'puppet-blacksmith'
+gem "puppetlabs_spec_helper"
+gem "rspec-puppet"
+gem 'rspec-system-puppet'
+gem 'travis'
+gem 'travis-lint'
 

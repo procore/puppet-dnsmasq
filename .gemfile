@@ -3,4 +3,12 @@ source :rubygems
 puppetversion = ENV['PUPPET_VERSION']
 gem 'puppet', puppetversion, :require => false
 gem 'puppet-lint'
-gem 'puppetlabs_spec_helper', '>= 0.1.0'
+gem 'rake'
+gem 'rspec-puppet'
+gem 'rspec-system-puppet'
+gem 'puppetlabs_spec_helper'
+gem 'travis'
+gem 'travis-lint'
+gem 'puppet-syntax'
+gem 'puppet-blacksmith'
+

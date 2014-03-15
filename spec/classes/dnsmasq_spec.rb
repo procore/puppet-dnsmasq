@@ -1,4 +1,4 @@
-require "#{File.join(File.dirname(__FILE__),'..','spec_helper.rb')}"
+require 'spec_helper'
 
 describe 'dnsmasq' do
 
@@ -10,7 +10,6 @@ describe 'dnsmasq' do
     it { should contain_package('dnsmasq').with_ensure('present') }
     it { should contain_service('dnsmasq').with_ensure('running') }
     it { should contain_service('dnsmasq').with_enable('true') }
-    it { should contain_file('dnsmasq.conf').with_ensure('present') }
   end
 
   describe 'Test installation of a specific version' do
@@ -73,12 +72,10 @@ describe 'dnsmasq' do
   describe 'Test customizations - template' do
     let(:params) { {:template => "dnsmasq/spec.erb" , :options => { 'opt_a' => 'value_a' } } }
     it 'should generate a valid template' do
-      content = catalogue.resource('file', 'dnsmasq.conf').send(:parameters)[:content]
-      content.should match "fqdn: rspec.example42.com"
+      should contain_file('dnsmasq.conf').with_content(/fqdn: rspec.example42.com/)
     end
     it 'should generate a template that uses custom options' do
-      content = catalogue.resource('file', 'dnsmasq.conf').send(:parameters)[:content]
-      content.should match "value_a"
+      should contain_file('dnsmasq.conf').with_content(/value_a/)
     end
   end
 
@@ -102,8 +99,7 @@ describe 'dnsmasq' do
   describe 'Test service autorestart' do
     let(:params) { {:service_autorestart => "no" } }
     it 'should not automatically restart the service, when service_autorestart => false' do
-      content = catalogue.resource('file', 'dnsmasq.conf').send(:parameters)[:notify]
-      content.should be_nil
+      should contain_file('dnsmasq.conf').without_notify
     end
   end
 

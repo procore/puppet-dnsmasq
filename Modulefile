@@ -1,5 +1,5 @@
 name 'netmanagers-dnsmasq'
-version '1.0.3'
+version '1.1.0'
 
 author 'Javier Bertoli'
 license 'Apache2'

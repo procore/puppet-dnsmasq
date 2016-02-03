@@ -861,7 +861,7 @@ class dnsmasq (
   }
 
   # The whole dnsmasq configuration directory can be recursively overriden
-  if $dnsmasq::source_dir {
+  if $dnsmasq::bool_source_dir_purge {
     file { 'dnsmasq.dir':
       ensure  => directory,
       path    => $dnsmasq::config_dir,

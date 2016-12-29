@@ -1,0 +1,33 @@
+{
+  "name": "netmanagers-dnsmasq",
+  "version": "1.1.0",
+  "author": "Javier Bertoli",
+  "summary": "Puppet module for dnsmasq",
+  "license": "Apache-2.0",
+  "source": "https://github.com/procore/puppet-dnsmasq",
+  "project_page": "https://github.com/procore/puppet-dnsmasq",
+  "issues_url": "https://github.com/procore/puppet-dnsmasq/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.1.0"
+    },
+    {
+      "name": "puppetlabs-concat",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "example42-puppi",
+      "version_requirement": ">= 2.0.0"
+    },
+    {
+      "name": "example42-firewall",
+      "version_requirement": ">= 2.0.0"
+    },
+    {
+      "name": "example42-monitor",
+      "version_requirement": ">= 2.0.0"
+    }
+  ],
+  "data_provider": null
+}

@@ -12,7 +12,7 @@ Made by Javier Bértoli / Netmanagers
 
 Official site: http://www.netmanagers.com.ar
 
-Official git repository: http://github.com/netmanagers/puppet-dnsmasq
+Official git repository: http://github.com/procore/puppet-dnsmasq
 
 Released under the terms of Apache 2 License.
 
@@ -164,4 +164,4 @@ and it will be added to the list of files to check in "addn-hosts"
 
 ## CONTINUOUS TESTING
 
-Travis {<img src="https://travis-ci.org/netmanagers/puppet-dnsmasq.png?branch=master" alt="Build Status" />}[https://travis-ci.org/netmanagers/puppet-dnsmasq]
+Travis {<img src="https://travis-ci.org/procore/puppet-dnsmasq.png?branch=master" alt="Build Status" />}[https://travis-ci.org/procore/puppet-dnsmasq]

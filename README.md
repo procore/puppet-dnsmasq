@@ -1,19 +1,8 @@
 # Puppet module: dnsmasq
 
-## [Maintainer wanted](https://github.com/netmanagers/puppet-dnsmasq/issues/new)
+## [puppet-dnsmasq](https://github.com/procore/puppet-dnsmasq) is now being maintained by Procore as of December 2016. Feel free to submit any issues at: https://github.com/procore/puppet-dnsmasq/issues or open PRs and join us.
 
-**WARNING WARNING WARNING**
-
-[puppet-dnsmasq](https://github.com/netmanagers/puppet-dnsmasq) is not currently being maintained, 
-and may have unresolved issues or not be up-to-date. 
-
-I'm still using it on a daily basis (with Puppet 3.8.5) and fixing issues I find
-while using it. But sadly, I don't have the time required to actively add new features,
-fix issues other people report or port it to Puppet 4.x.
-
-If you would like to maintain this module,
-please create an issue at: https://github.com/netmanagers/puppet-dnsmasq/issues
-offering yourself.
+Thank you
 
 ## Getting started
 

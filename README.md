@@ -1,6 +1,6 @@
 # Puppet module: dnsmasq
 
-## [puppet-dnsmasq](https://github.com/netmanagers/puppet-dnsmasq) is now being maintained by Procore as of December 2016. Feel free to submit any issues at: https://github.com/netmanagers/puppet-dnsmasq/issues or open PRs and join us.
+## [puppet-dnsmasq](https://github.com/procore/puppet-dnsmasq) is now being maintained by Procore as of December 2016. Feel free to submit any issues at: https://github.com/procore/puppet-dnsmasq/issues or open PRs and join us.
 
 Thank you
 

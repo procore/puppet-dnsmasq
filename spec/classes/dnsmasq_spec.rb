@@ -4,7 +4,7 @@ describe 'dnsmasq' do
 
   let(:title) { 'dnsmasq' }
   let(:node) { 'rspec.example42.com' }
-  let(:facts) { { :ipaddress => '10.42.42.42',:concat_basedir => '/var/lib/puppet/concat'} }
+  let(:facts) { { :ipaddress => '10.42.42.42',:concat_basedir => '/var/lib/puppet/concat', operatingsystemrelease: '14.04' } }
 
   describe 'Test standard installation' do
     it { should contain_package('dnsmasq').with_ensure('present') }
@@ -91,6 +91,12 @@ describe 'dnsmasq' do
     it { should contain_file('dnsmasq.dir').with_force('true') }
   end
 
+  describe 'Test customizations - empty source_dir' do
+    let(:params) { {:source_dir => "" , :source_dir_purge => true } }
+    it { should_not contain_file('dnsmasq.dir').with_source('puppet:///modules/dnsmasq/dir/spec') }
+    it { should_not contain_file('dnsmasq.dir').with_purge('true') }
+    it { should_not contain_file('dnsmasq.dir').with_force('true') }
+  end
   describe 'Test customizations - custom class' do
     let(:params) { {:my_class => "dnsmasq::spec" } }
     it { should contain_file('dnsmasq.conf').with_content(/rspec.example42.com/) }

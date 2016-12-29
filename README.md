@@ -164,4 +164,4 @@ and it will be added to the list of files to check in "addn-hosts"
 
 ## CONTINUOUS TESTING
 
-Travis {<img src="https://travis-ci.org/procore/puppet-dnsmasq.png?branch=master" alt="Build Status" />}[https://travis-ci.org/procore/puppet-dnsmasq]
+[![Build Status](https://travis-ci.org/procore/puppet-dnsmasq.svg?branch=master)](https://travis-ci.org/procore/puppet-dnsmasq)

@@ -816,18 +816,18 @@ class dnsmasq (
 
   ### Managed resources
   package { $dnsmasq::package:
-    ensure  => $dnsmasq::manage_package,
-    noop    => $dnsmasq::noops,
+    ensure => $dnsmasq::manage_package,
+    noop   => $dnsmasq::noops,
   }
 
   service { 'dnsmasq':
-    ensure     => $dnsmasq::manage_service_ensure,
-    name       => $dnsmasq::service,
-    enable     => $dnsmasq::manage_service_enable,
-    hasstatus  => $dnsmasq::service_status,
-    pattern    => $dnsmasq::process,
-    require    => Package[$dnsmasq::package],
-    noop       => $dnsmasq::noops,
+    ensure    => $dnsmasq::manage_service_ensure,
+    name      => $dnsmasq::service,
+    enable    => $dnsmasq::manage_service_enable,
+    hasstatus => $dnsmasq::service_status,
+    pattern   => $dnsmasq::process,
+    require   => Package[$dnsmasq::package],
+    noop      => $dnsmasq::noops,
   }
 
   if $dnsmasq::addn_hosts_dir != '' {
